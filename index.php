@@ -1,12 +1,6 @@
 <?php
-//phpinfo();
-//exit;
-//spl_autoload_register(function ($MyApi){
-//    include './classes/' . $MyApi . '.php';
-//});
-//require __DIR__.'./vendor/autoload.php';
 
-//include_once './vendor/autoload.php';
+include_once './vendor/autoload.php';
 
 use Roowix\ShopiconApp\DB\DB;
 use Roowix\ShopiconApp\Response\ResponseWriter;

@@ -13,25 +13,25 @@ class DB implements EntityStorageInterface
 
     public function __construct()
     {
-        $this->dbconn = pg_connect("host=localhost port=5432 dbname=postgres user=postgres password=iebdkst")
-        or die('Не удалось соединиться: ' . pg_last_error());
-        $this->tableName = 'images';
+        $this->dbconn = pg_connect("host=localhost port=5432 dbname=shopicon user=postgres")
+            or die('Не удалось соединиться: ' . pg_last_error());
+        $this->tableName = 'publications';
     }
 
     public function takeAll()
     {
-        $query  = pg_query($this->dbconn, "SELECT * FROM images");
+        $query  = pg_query($this->dbconn, "SELECT * FROM publications");
         $images = array();
         while ($row = pg_fetch_row($query)) {
             // !частная реализация для students
-            $students[] = array("image" => $row[0], "id" => $row[2]);
+            $images[] = array("path" => $row[0], "id_publication" => $row[2]);
         }
         return $images;
     }
 
     public function insert(array $fields)
     {
-        $newImage = array("image" => $fields["image"]);
+        $newImage = array("path" => $fields["path"]);
         $result = pg_insert($this->dbconn, $this->tableName, $newImage);
 
         if ($result == false) {
