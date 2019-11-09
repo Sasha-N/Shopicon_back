@@ -24,7 +24,7 @@ class DB implements EntityStorageInterface
         $images = array();
         while ($row = pg_fetch_row($query)) {
             // !частная реализация для students
-            $images[] = array("path" => $row[0], "id_publication" => $row[2]);
+            $images[] = array("path" => $row[0], "id_publication" => $row[1]);
         }
         return $images;
     }
